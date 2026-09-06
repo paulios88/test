@@ -40,14 +40,23 @@ h1 {
   text-transform: capitalize;
 }
 
+.summary {
+  margin: 6px 0 0;
+  color: #f2f2f7;
+  font-size: 13px;
+  font-weight: 600;
+}
+
 #add-form {
   display: flex;
   gap: 8px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
 #habit-input {
   flex: 1;
+  min-width: 0;
   padding: 12px 14px;
   border-radius: 12px;
   border: none;
@@ -58,6 +67,15 @@ h1 {
 
 #habit-input::placeholder {
   color: #6e6e73;
+}
+
+#category-select {
+  padding: 12px 10px;
+  border-radius: 12px;
+  border: none;
+  background: #1c1c1e;
+  color: #f2f2f7;
+  font-size: 14px;
 }
 
 #add-form button {
@@ -85,32 +103,16 @@ h1 {
 }
 
 .habit {
-  display: flex;
-  align-items: center;
-  gap: 12px;
   background: #1c1c1e;
   padding: 14px;
   border-radius: 14px;
+  border-left: 4px solid var(--cat-color, #3a3a3c);
 }
 
-.habit-check {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 2px solid #3a3a3c;
-  background: transparent;
-  flex-shrink: 0;
-  cursor: pointer;
+.habit-top {
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 16px;
-}
-
-.habit.done .habit-check {
-  background: #30d158;
-  border-color: #30d158;
+  gap: 12px;
 }
 
 .habit-info {
@@ -123,15 +125,23 @@ h1 {
   word-break: break-word;
 }
 
-.habit.done .habit-name {
-  color: #8e8e93;
-  text-decoration: line-through;
+.habit-category {
+  font-size: 11px;
+  color: var(--cat-color, #8e8e93);
+  margin-top: 2px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
-.habit-streak {
+.habit-stats {
   font-size: 12px;
-  color: #ff9f0a;
+  color: #8e8e93;
   margin-top: 2px;
+}
+
+.habit-stats .streak {
+  color: #ff9f0a;
 }
 
 .habit-delete {
@@ -142,6 +152,51 @@ h1 {
   cursor: pointer;
   padding: 4px 6px;
   flex-shrink: 0;
+}
+
+.week-grid {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  gap: 4px;
+}
+
+.day-cell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.day-label {
+  font-size: 10px;
+  color: #6e6e73;
+}
+
+.day-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #3a3a3c;
+  background: transparent;
+  cursor: pointer;
+  color: #fff;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.day-dot.done {
+  background: var(--cat-color, #30d158);
+  border-color: var(--cat-color, #30d158);
+}
+
+.day-cell.today .day-label {
+  color: #f2f2f7;
+  font-weight: 700;
 }
 
 .empty {
