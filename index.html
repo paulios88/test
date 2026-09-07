@@ -14,11 +14,19 @@
       <p class="summary" id="summary"></p>
     </header>
 
-    <form id="add-form">
-      <input type="text" id="habit-input" placeholder="Neue Gewohnheit..." maxlength="40" required>
-      <select id="category-select"></select>
-      <button type="submit">+</button>
-    </form>
+    <section class="presets">
+      <h2>Vorschläge</h2>
+      <div id="preset-list" class="preset-list"></div>
+    </section>
+
+    <section class="add-section">
+      <h2>Eigene Gewohnheit</h2>
+      <form id="add-form">
+        <input type="text" id="habit-input" placeholder="z. B. Gitarre üben" maxlength="40" required>
+        <select id="category-select"></select>
+        <button type="submit" id="add-button" aria-label="Hinzufügen"></button>
+      </form>
+    </section>
 
     <ul id="habit-list"></ul>
 
